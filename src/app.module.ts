@@ -6,13 +6,14 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 //import { ApolloServerPlugin } from 'apollo-server-plugin-base';
 import { ConfigModule } from '@nestjs/config';
 import {ProductsModule} from './products/products.module'
+import { DatabaseModule } from './database/database.module';
 @Module({
   imports: [ConfigModule.forRoot(),GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true,
     
-  }),ProductsModule],
+  }),ProductsModule, DatabaseModule],
   
   controllers: [],
   providers: [],
