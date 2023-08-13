@@ -3,7 +3,9 @@ import { ProductsService } from './products.service';
 import { Product } from './entities/product.entity';
 import { ProductInput } from './dto/create-product.input';
 import { UpdateProductInput } from './dto/update-product.input';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Products')
 @Resolver(() => Product)
 export class ProductsResolver {
   constructor(private readonly productsService: ProductsService) {}

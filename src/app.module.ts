@@ -7,6 +7,7 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule } from '@nestjs/config';
 import {ProductsModule} from './products/products.module'
 import { DatabaseModule } from './database/database.module';
+import {ProductsProviders}from './products/products.providers'
 @Module({
   imports: [ConfigModule.forRoot(),GraphQLModule.forRoot<ApolloDriverConfig>({
     driver: ApolloDriver,
