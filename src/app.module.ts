@@ -6,15 +6,15 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 //import { ApolloServerPlugin } from 'apollo-server-plugin-base';
 import { ConfigModule } from '@nestjs/config';
 import {ProductsModule} from './products/products.module'
+//import { MongooseModule } from '@nestjs/mongoose';
 import { DatabaseModule } from './database/database.module';
-import {ProductsProviders}from './products/products.providers'
 @Module({
   imports: [ConfigModule.forRoot(),GraphQLModule.forRoot<ApolloDriverConfig>({
-    driver: ApolloDriver,
+  driver: ApolloDriver,
     autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     sortSchema: true,
     
-  }),ProductsModule, DatabaseModule],
+  }),ProductsModule,DatabaseModule ],//MongooseModule.forRoot('mongodb://localhost:27017/ecommerce'
   
   controllers: [],
   providers: [],

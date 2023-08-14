@@ -1,14 +1,14 @@
 import { Injectable,Inject } from '@nestjs/common';
+import { Model } from 'mongoose';
 import { ProductInput } from './dto/create-product.input';
 import { UpdateProductInput } from './dto/update-product.input';
 import axios from 'axios';
-import { Product } from './entities/product.entity';
-import { Model } from 'mongoose';
+import { Product } from './interfaces/product.interface';
 @Injectable()
 export class ProductsService {
   private readonly URL: string
   constructor(
-    @Inject('PRODUCT') private productModel: Model<Product>, 
+     @Inject('PRODUCT') private productModel: Model<Product>, 
   ) {
     this.URL = 'https://fakestoreapi.com/products';
   }
