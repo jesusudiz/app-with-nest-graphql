@@ -1,8 +1,8 @@
-import { ProductInput } from './create-product.input';
+import { ProductDTO } from './create-product.input';
 import { InputType, Field, Int, PartialType } from '@nestjs/graphql';
 
 @InputType()
-export class UpdateProductInput extends PartialType(ProductInput) {
+export class UpdateProductDTO extends PartialType(ProductDTO) {
   @Field(() => Int, { description: 'Example field (placeholder)' })
   id: number;
   @Field(() => String, { description: 'Example field (placeholder)' })

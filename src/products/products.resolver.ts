@@ -1,8 +1,8 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
 import { ProductsService } from './products.service';
 import { Product } from './entities/product.entity';
-import { ProductInput } from './dto/create-product.input';
-import { UpdateProductInput } from './dto/update-product.input';
+import { ProductDTO } from './dto/create-product.input';
+import { UpdateProductDTO } from './dto/update-product.input';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Products')
@@ -11,8 +11,8 @@ export class ProductsResolver {
   constructor(private readonly productsService: ProductsService) {}
 
   @Mutation(() => Product)
-  createProduct(@Args('createProductInput') createProductInput: ProductInput) {
-    return this.productsService.create(createProductInput);
+  createProduct(@Args('createProductDTO') createProductDTO: ProductDTO) {
+    return this.productsService.create(createProductDTO);
   }
 
   @Query(() =>[Product], { name: 'products' })
@@ -28,13 +28,24 @@ export class ProductsResolver {
   @Mutation(() => Product)
   updateProduct(
     @Args('id', { type: () => Int }) id: number,
-    @Args('updateProductInput') updateProductInput: UpdateProductInput
+    @Args('updateProductDTO') updateProductDTO: UpdateProductDTO
   )  {
-    return this.productsService.update(updateProductInput.id, updateProductInput);
+    return this.productsService.update(updateProductDTO.id, updateProductDTO);
   }
 
   @Mutation(() => [Product])
   removeProduct(@Args('id', { type: () => Int }) id: number) {
     return this.productsService.remove(id);
   }
+  @Mutation(() => String)
+  async saveAllData(): Promise<string> {
+    try {
+      const result = await this.productsService.saveAllData();
+      return result;
+    } catch (error) {
+      console.error('Error al guardar los datos:', error);
+      throw new Error('No se pudieron guardar los datos.');
+    }
+  }
 }
+ 

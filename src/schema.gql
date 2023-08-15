@@ -3,9 +3,10 @@
 # ------------------------------------------------------
 
 type Mutation {
-  createProduct(createProductInput: ProductInput!): Product!
+  createProduct(createProductDTO: ProductDTO!): Product!
   removeProduct(id: Int!): [Product!]!
-  updateProduct(id: Int!, updateProductInput: UpdateProductInput!): Product!
+  saveAllData: String!
+  updateProduct(id: Int!, updateProductDTO: UpdateProductDTO!): Product!
 }
 
 type Product {
@@ -28,7 +29,7 @@ type Product {
   title: String!
 }
 
-input ProductInput {
+input ProductDTO {
   """Example field (placeholder)"""
   category: Int!
 
@@ -53,7 +54,7 @@ type Query {
   products: [Product!]!
 }
 
-input UpdateProductInput {
+input UpdateProductDTO {
   """Example field (placeholder)"""
   category: String!
 
