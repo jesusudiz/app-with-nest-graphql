@@ -1,0 +1,78 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  createProduct(createProductDTO: ProductDTO!): Product!
+  removeProduct(id: Int!): [Product!]!
+  saveAllData: String!
+  updateProduct(id: Int!, updateProductDTO: UpdateProductDTO!): Product!
+}
+
+type Product {
+  """Category of the product"""
+  category: String!
+
+  """Description of the product """
+  description: String!
+
+  """for the id of the product generated automatically by the DB"""
+  id: Int!
+
+  """Image of the product"""
+  image: String!
+
+  """Price of the product"""
+  price: String!
+
+  """Category of the product"""
+  stock: String!
+
+  """Product name"""
+  title: String!
+}
+
+input ProductDTO {
+  """Example field (placeholder)"""
+  category: Int!
+
+  """Example field (placeholder)"""
+  description: Int!
+
+  """Example field (placeholder)"""
+  id: Int!
+
+  """Example field (placeholder)"""
+  image: Int!
+
+  """Example field (placeholder)"""
+  price: Int!
+
+  """Example field (placeholder)"""
+  title: Int!
+}
+
+type Query {
+  product(id: Int!): Product!
+  products: [Product!]!
+}
+
+input UpdateProductDTO {
+  """Example field (placeholder)"""
+  category: String!
+
+  """Example field (placeholder)"""
+  description: String!
+
+  """Example field (placeholder)"""
+  id: Int!
+
+  """Example field (placeholder)"""
+  image: String!
+
+  """Example field (placeholder)"""
+  price: String!
+
+  """Example field (placeholder)"""
+  title: String!
+}
