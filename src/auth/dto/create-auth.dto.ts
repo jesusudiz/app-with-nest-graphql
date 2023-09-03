@@ -10,9 +10,6 @@ import {
 
 @InputType()
 export class CreateAuthInputDTO {
-  @Field(() => Int, { description: ' field Id' })
-  id?: number;
-
   @Field(() => String, { description: ' field name' })
   @IsNotEmpty({ message: 'El $property no debe estar vacio' })
   name: string;
@@ -38,4 +35,3 @@ export class CreateAuthInputDTO {
   @IsNumber()
   phone: number;
 }
-;

@@ -4,7 +4,7 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 export class ProductDTO {
  
   @Field(() => Int, { description: ' field id' })
-    id?:          number
+    id:          number
   @Field(() => String, { description: ' field title' })
     title:       string
   @Field(() => String, { description: ' field price' })
