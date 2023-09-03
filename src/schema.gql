@@ -3,13 +3,43 @@
 # ------------------------------------------------------
 
 type Auth {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Category of the product"""
+  email: String!
+
+  """for the id of the product generated automatically by the DB"""
+  id: Int!
+
+  """name of the user"""
+  name: String!
+
+  """Category of the product"""
+  password: String!
+
+  """Description of the product """
+  phone: String!
+
+  """Price of the product"""
+  surname: String!
 }
 
 input CreateAuthInputDTO {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """ field email"""
+  email: Int!
+
+  """ field Id"""
+  id: Int!
+
+  """ field name"""
+  name: Int!
+
+  """ field password"""
+  password: Int!
+
+  """ field phone"""
+  phone: Int!
+
+  """ field surname"""
+  surname: Int!
 }
 
 type Mutation {
@@ -72,9 +102,23 @@ type Query {
 }
 
 input UpdateAuthInputDTO {
-  """Example field (placeholder)"""
-  exampleField: Int
+  """ field email"""
+  email: Int!
+
+  """ field Id"""
   id: Int!
+
+  """ field name"""
+  name: Int!
+
+  """ field password"""
+  password: Int!
+
+  """ field phone"""
+  phone: Int!
+
+  """ field surname"""
+  surname: Int!
 }
 
 input UpdateProductDTO {

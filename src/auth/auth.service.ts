@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthInputDTO} from './dto/create-auth.input';
-import {UpdateAuthInputDTO} from './dto/update-auth.input';
+import { CreateAuthInputDTO} from './dto/create-auth.dto';
+import {UpdateAuthInputDTO} from './dto/update-auth.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private productModel: Model<User>) {
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {
   }
  async singnIn(createAuthInput: CreateAuthInputDTO) {
     return 'This action adds a new auth';
