@@ -1,16 +1,39 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAuthInputDTO} from './dto/create-auth.dto';
-import {UpdateAuthInputDTO} from './dto/update-auth.dto';
 import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { User } from './schemas/user.schema';
+import { InjectModel } from '@nestjs/mongoose';
+import { CreateAuthInputDTO } from './dto/create-auth.dto';
+import { UpdateAuthInputDTO } from './dto/update-auth.dto';
 
 @Injectable()
 export class AuthService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {
-  }
- async singnIn(createAuthInput: CreateAuthInputDTO) {
-    return 'This action adds a new auth';
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+
+  async singnIn(newUser: CreateAuthInputDTO) {
+    try {
+      const existingUser = await this.userModel.findOne({
+        email: newUser.email,
+      });
+      if (existingUser) {
+        return {
+          user: newUser.email,
+          message: `El correo ${newUser.email} ya se encuentra registrado puede iniciar sesion`,
+        };
+      } else {
+        let registerUser = await this.userModel.create(newUser);
+        registerUser = await this.userModel.findOne({ email: newUser.email });
+        if (registerUser) {
+          return {
+            user: newUser.email,
+            message: `Usuario registrado con Exito`,
+          };
+        } else {
+          throw new Error(`Error al intentar registrar el usuario`);
+        }
+      }
+    } catch (err) {
+      throw new Error(`Error en el proceso de registro: ${err.message}`);
+    }
   }
 
   findAll() {
