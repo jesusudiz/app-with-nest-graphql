@@ -2,10 +2,23 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Auth {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input CreateAuthInputDTO {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Mutation {
+  createAuth(createAuthInput: CreateAuthInputDTO!): Auth!
   createProduct(createProductDTO: ProductDTO!): Product!
+  removeAuth(id: Int!): Auth!
   removeProduct(id: Int!): [Product!]!
   saveAllData: String!
+  updateAuth(updateAuthInput: UpdateAuthInputDTO!): Auth!
   updateProduct(id: Int!, updateProductDTO: UpdateProductDTO!): Product!
 }
 
@@ -33,28 +46,35 @@ type Product {
 }
 
 input ProductDTO {
-  """Example field (placeholder)"""
+  """ field category"""
   category: Int!
 
-  """Example field (placeholder)"""
+  """ field description"""
   description: Int!
 
-  """Example field (placeholder)"""
+  """ field id"""
   id: Int!
 
-  """Example field (placeholder)"""
+  """ field image"""
   image: Int!
 
-  """Example field (placeholder)"""
+  """ field price"""
   price: Int!
 
-  """Example field (placeholder)"""
+  """ field title"""
   title: Int!
 }
 
 type Query {
+  auth(id: Int!): Auth!
   product(id: Int!): Product!
   products: [Product!]!
+}
+
+input UpdateAuthInputDTO {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
 
 input UpdateProductDTO {
