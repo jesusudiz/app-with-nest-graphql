@@ -11,22 +11,22 @@ import {
 @InputType()
 export class CreateAuthInputDTO {
   @Field(() => Int, { description: ' field Id' })
-  id: number;
+  id?: number;
 
-  @Field(() => Int, { description: ' field name' })
+  @Field(() => String, { description: ' field name' })
   @IsNotEmpty({ message: 'El $property no debe estar vacio' })
   name: string;
 
-  @Field(() => Int, { description: ' field surname' })
+  @Field(() => String, { description: ' field surname' })
   @IsNotEmpty()
   surname: string;
 
-  @Field(() => Int, { description: ' field email' })
+  @Field(() => String, { description: ' field email' })
   @IsNotEmpty({ message: 'El $property no debe estar vacio' })
   @IsEmail()
   email: string;
 
-  @Field(() => Int, { description: ' field password' })
+  @Field(() => String, { description: ' field password' })
   @IsNotEmpty({ message: 'El $property no debe estar vacio' })
   @MinLength(8, { message: 'Debe contener más de 8 caracteres' })
   @MaxLength(12, { message: 'No debe superar más de 12 caracteres' })
