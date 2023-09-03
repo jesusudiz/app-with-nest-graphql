@@ -4,15 +4,15 @@ import { InputType, Int, Field } from '@nestjs/graphql';
 export class ProductDTO {
  
   @Field(() => Int, { description: ' field id' })
-    id:          number
-  @Field(() => Int, { description: ' field title' })
+    id?:          number
+  @Field(() => String, { description: ' field title' })
     title:       string
-  @Field(() => Int, { description: ' field price' })
+  @Field(() => String, { description: ' field price' })
     price:       string
-  @Field(() => Int, { description: ' field category' })
+  @Field(() => String, { description: ' field category' })
     category:    string
-  @Field(() => Int, { description: ' field description' })
+  @Field(() => String, { description: ' field description' })
     description: string
-  @Field(() => Int, { description: ' field image' })
+  @Field(() => String, { description: ' field image' })
     image:       string
 }
