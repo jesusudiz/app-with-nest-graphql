@@ -4,7 +4,7 @@ import { User } from './schemas/user.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { CreateAuthInputDTO } from './dto/create-auth.dto';
 import { UpdateAuthInputDTO } from './dto/update-auth.dto';
-
+import { hash } from 'bcrypt';
 @Injectable()
 export class AuthService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
@@ -20,6 +20,9 @@ export class AuthService {
           message: `El correo ${newUser.email} ya se encuentra registrado puede iniciar sesion`,
         };
       } else {
+        const { password } = newUser;
+        const plaintoHash = await hash(password, 10);
+        newUser.password=plaintoHash;
         let registerUser = await this.userModel.create(newUser);
         registerUser = await this.userModel.findOne({ email: newUser.email });
         if (registerUser) {
