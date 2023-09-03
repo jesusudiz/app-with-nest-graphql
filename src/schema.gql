@@ -6,9 +6,6 @@ type Auth {
   """Category of the product"""
   email: String!
 
-  """for the id of the product generated automatically by the DB"""
-  id: Int!
-
   """name of the user"""
   name: String!
 
@@ -22,28 +19,48 @@ type Auth {
   surname: String!
 }
 
+type AuthResponse {
+  """Category of the product"""
+  email: String!
+
+  """Mensaje de éxito al guardar usuario"""
+  message: String!
+
+  """name of the user"""
+  name: String!
+
+  """Category of the product"""
+  password: String!
+
+  """Description of the product """
+  phone: String!
+
+  """Price of the product"""
+  surname: String!
+
+  """name of the user"""
+  user: String!
+}
+
 input CreateAuthInputDTO {
   """ field email"""
-  email: Int!
-
-  """ field Id"""
-  id: Int!
+  email: String!
 
   """ field name"""
-  name: Int!
+  name: String!
 
   """ field password"""
-  password: Int!
+  password: String!
 
   """ field phone"""
   phone: Int!
 
   """ field surname"""
-  surname: Int!
+  surname: String!
 }
 
 type Mutation {
-  createAuth(createAuthInput: CreateAuthInputDTO!): Auth!
+  createAuth(createAuthInput: CreateAuthInputDTO!): AuthResponse!
   createProduct(createProductDTO: ProductDTO!): Product!
   removeAuth(id: Int!): Auth!
   removeProduct(id: Int!): [Product!]!
@@ -77,22 +94,22 @@ type Product {
 
 input ProductDTO {
   """ field category"""
-  category: Int!
+  category: String!
 
   """ field description"""
-  description: Int!
+  description: String!
 
   """ field id"""
   id: Int!
 
   """ field image"""
-  image: Int!
+  image: String!
 
   """ field price"""
-  price: Int!
+  price: String!
 
   """ field title"""
-  title: Int!
+  title: String!
 }
 
 type Query {
