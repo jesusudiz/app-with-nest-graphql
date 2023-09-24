@@ -20,26 +20,11 @@ type Auth {
 }
 
 type AuthResponse {
-  """Category of the product"""
+  """name of the user"""
   email: String!
 
   """Mensaje de éxito al guardar usuario"""
   message: String!
-
-  """name of the user"""
-  name: String!
-
-  """Category of the product"""
-  password: String!
-
-  """Description of the product """
-  phone: String!
-
-  """Price of the product"""
-  surname: String!
-
-  """name of the user"""
-  user: String!
 }
 
 input CreateAuthInputDTO {
@@ -60,12 +45,12 @@ input CreateAuthInputDTO {
 }
 
 type Mutation {
-  createAuth(createAuthInput: CreateAuthInputDTO!): AuthResponse!
+  Delete_User(id: Int!): Auth!
+  Register_User(createAuthInput: CreateAuthInputDTO!): AuthResponse!
+  Update_User(updateAuthInput: UpdateAuthInputDTO!): Auth!
   createProduct(createProductDTO: ProductDTO!): Product!
-  removeAuth(id: Int!): Auth!
   removeProduct(id: Int!): [Product!]!
   saveAllData: String!
-  updateAuth(updateAuthInput: UpdateAuthInputDTO!): Auth!
   updateProduct(id: Int!, updateProductDTO: UpdateProductDTO!): Product!
 }
 
@@ -113,7 +98,8 @@ input ProductDTO {
 }
 
 type Query {
-  auth(id: Int!): Auth!
+  Login_User(LoginAuthDTO: Int!): UserLoged!
+  Restart_Password: [Auth!]!
   product(id: Int!): Product!
   products: [Product!]!
 }
@@ -156,4 +142,12 @@ input UpdateProductDTO {
 
   """Example field (placeholder)"""
   title: String!
+}
+
+type UserLoged {
+  """name of the user"""
+  email: String!
+
+  """status user"""
+  status: String!
 }
