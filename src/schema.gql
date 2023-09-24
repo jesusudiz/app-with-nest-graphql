@@ -38,10 +38,18 @@ input CreateAuthInputDTO {
   password: String!
 
   """ field phone"""
-  phone: Int!
+  phone: String!
 
   """ field surname"""
   surname: String!
+}
+
+input LoginAuthDTO {
+  """ field email"""
+  email: String!
+
+  """ field password"""
+  password: String!
 }
 
 type Mutation {
@@ -98,7 +106,7 @@ input ProductDTO {
 }
 
 type Query {
-  Login_User(LoginAuthDTO: Int!): UserLoged!
+  Login_User(LoginAuthDTO: LoginAuthDTO!): UserLoged!
   Restart_Password: [Auth!]!
   product(id: Int!): Product!
   products: [Product!]!
@@ -149,5 +157,5 @@ type UserLoged {
   email: String!
 
   """status user"""
-  status: String!
+  status: Boolean!
 }
