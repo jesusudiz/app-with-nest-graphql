@@ -30,9 +30,9 @@ export class CreateAuthInputDTO {
   @IsAlphanumeric()
   password: string;
 
-  @Field(() => Int, { description: ' field phone' })
+  @Field(() => String, { description: ' field phone' })
   @IsNotEmpty({ message: 'El $property no debe estar vacio' })
-  @MinLength(9, { message: 'Debe contener más de 9 digitos' })
-  @IsNumber()
-  phone: number;
+  @MinLength(10, { message: 'El teléfono debe contener más de 9 digitos' })
+ // @IsNumber()
+  phone: string;
 }
