@@ -1,6 +1,5 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
-import { extendSchema } from 'graphql';
-
+import { ObjectType, Field } from '@nestjs/graphql';
+import { PickType } from '@nestjs/swagger';
 @ObjectType()
 export class Auth {
  
@@ -17,9 +16,17 @@ export class Auth {
 }
 
 @ObjectType()
-export class AuthResponse extends Auth {
+export class AuthResponse extends PickType( Auth, ['email'] as const) {
   @Field(() => String, { description: 'name of the user' })
-  user: string;
+  email: string;
   @Field(() => String, { description: 'Mensaje de éxito al guardar usuario' })
   message: string;
+}
+
+@ObjectType()
+export class UserLoged extends PickType( Auth, ['email'] as const){
+  @Field(() => String, { description: 'name of the user' })
+  email: string;
+  @Field(() => String, { description: 'status user' })
+  status: boolean;
 }
