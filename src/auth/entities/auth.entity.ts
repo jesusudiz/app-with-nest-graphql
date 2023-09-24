@@ -27,6 +27,6 @@ export class AuthResponse extends PickType( Auth, ['email'] as const) {
 export class UserLoged extends PickType( Auth, ['email'] as const){
   @Field(() => String, { description: 'name of the user' })
   email: string;
-  @Field(() => String, { description: 'status user' })
+  @Field(() => Boolean, { description: 'status user' })
   status: boolean;
 }
