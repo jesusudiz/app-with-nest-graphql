@@ -14,5 +14,5 @@ export class UpdateAuthInputDTO extends PartialType(CreateAuthInputDTO) {
   @Field(() => Int, { description: ' field password' })
   password: string;
   @Field(() => Int, { description: ' field phone' })
-  phone: number;
+  phone: string;
 }
