@@ -23,7 +23,7 @@ export class AuthResolver {
   }
 
   @Query(() => UserLoged, { name: 'Login_User' })
-  Login(@Args('LoginAuthDTO', { type: () => Int }) UserLogin: LoginAuthDTO) {
+  Login(@Args('LoginAuthDTO', { type: () => LoginAuthDTO }) UserLogin: LoginAuthDTO) {
     return this.authService.Login(UserLogin);
   }
 
